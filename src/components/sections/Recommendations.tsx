@@ -137,7 +137,7 @@ export function Recommendations() {
   const active = categories.find((c) => c.id === activeId) ?? categories[0]
 
   return (
-    <section id="recommendations" ref={sectionRef} className="px-4 py-20">
+    <section id="recommendations" ref={sectionRef} className="px-4 pt-32 pb-20">
       <div 
         className={`max-w-2xl mx-auto transition-all duration-1000 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
