@@ -28,8 +28,12 @@
   --color-text-muted: #606060;
 
   /* Font families */
-  --font-family-sans: 'Inter', system-ui, sans-serif;
-  --font-family-display: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+
+  /* Font sizes */
+  --text-hero: clamp(2.25rem, 6vw, 4rem);
+  --text-section: clamp(1.5rem, 4vw, 2.5rem);
 
   /* Custom shadows */
   --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
@@ -59,6 +63,10 @@
   :root {
     --scrollbar-thumb: #2a2a2a;
     --scrollbar-track: #0a0a0a;
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,150,0.12) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    --gradient-section: linear-gradient(180deg, transparent 0%, rgba(0,200,150,0.03) 50%, transparent 100%);
+    --gradient-premium: linear-gradient(135deg, rgba(245,166,35,0.08) 0%, rgba(0,200,150,0.08) 100%);
   }
 
   * { box-sizing: border-box; }
