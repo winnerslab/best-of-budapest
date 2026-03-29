@@ -1,15 +1,28 @@
 import { ButtonHTMLAttributes, AnchorHTMLAttributes, forwardRef } from 'react'
-import { trackEvent, EventName } from '@/lib/analytics'
+import { trackEvent } from '@/lib/analytics'
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'warm'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseProps {
   variant?: ButtonVariant
   size?: ButtonSize
-  href?: string
   trackingLabel?: string
+  className?: string
+  children?: React.ReactNode
 }
+
+type ButtonAsButton = BaseProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
+    href?: undefined
+  }
+
+type ButtonAsAnchor = BaseProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> & {
+    href: string
+  }
+
+type ButtonProps = ButtonAsButton | ButtonAsAnchor
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -28,40 +41,53 @@ const sizeClasses: Record<ButtonSize, string> = {
   lg: 'px-8 py-4 text-lg rounded-2xl',
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', size = 'md', href, trackingLabel, className = '', onClick, children, ...props }, ref) => {
-    const classes = [
-      'inline-flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer select-none',
-      variantClasses[variant],
-      sizeClasses[size],
-      className,
-    ].join(' ')
+const baseClasses =
+  'inline-flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer select-none'
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (trackingLabel) {
-        trackEvent('hero_cta_click', { label: trackingLabel })
-      }
-      onClick?.(e)
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  trackingLabel,
+  className = '',
+  children,
+  ...props
+}: ButtonProps) {
+  const classes = [baseClasses, variantClasses[variant], sizeClasses[size], className].join(' ')
+
+  const handleTracking = () => {
+    if (trackingLabel) {
+      trackEvent('hero_cta_click', { label: trackingLabel })
     }
+  }
 
-    if (href) {
-      return (
-        <a
-          href={href}
-          className={classes}
-          onClick={() => trackingLabel && trackEvent('hero_cta_click', { label: trackingLabel })}
-        >
-          {children}
-        </a>
-      )
-    }
-
+  if ('href' in props && props.href !== undefined) {
+    const { href, onClick, ...anchorProps } = props as ButtonAsAnchor
     return (
-      <button ref={ref} className={classes} onClick={handleClick} {...props}>
+      <a
+        href={href}
+        className={classes}
+        onClick={(e) => {
+          handleTracking()
+          onClick?.(e)
+        }}
+        {...anchorProps}
+      >
         {children}
-      </button>
+      </a>
     )
   }
-)
 
-Button.displayName = 'Button'
+  const { onClick, ...buttonProps } = props as ButtonAsButton
+  return (
+    <button
+      className={classes}
+      onClick={(e) => {
+        handleTracking()
+        onClick?.(e)
+      }}
+      {...buttonProps}
+    >
+      {children}
+    </button>
+  )
+}
