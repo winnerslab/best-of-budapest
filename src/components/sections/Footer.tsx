@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button'
+import { CurrentYear } from '@/components/ui/CurrentYear'
 
 const navLinks = [
   { label: 'Itineraries', href: '#itineraries' },
@@ -57,7 +58,7 @@ export function Footer() {
 
         <div className="border-t border-base-border pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="text-xs text-text-muted">
-            © {new Date().getFullYear()} Best of Budapest. All rights reserved.
+            © <CurrentYear /> Best of Budapest. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="/privacy" className="text-xs text-text-muted hover:text-text-secondary transition-colors">Privacy</a>

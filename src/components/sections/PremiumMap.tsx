@@ -70,6 +70,7 @@ export function PremiumMap() {
             variant="warm"
             size="lg"
             href="[PREMIUM_MAP_LINK]"
+            className="w-full sm:w-auto"
             onClick={() => trackEvent('premium_map_cta_click', { label: 'unlock_map' })}
           >
             Unlock the premium map →
