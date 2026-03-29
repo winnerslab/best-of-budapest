@@ -123,7 +123,7 @@ function MapsButton({ name }: { name: string }) {
 
 export function RecommendationsList() {
   return (
-    <section className="px-4 pt-2 pb-10">
+    <section className="px-4 pt-32 pb-10">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Local picks</p>
@@ -131,7 +131,7 @@ export function RecommendationsList() {
             Our recommendations
           </h2>
           <p className="text-text-secondary mt-2 text-sm">
-            Everything we&apos;d tell a friend on their first trip to Budapest.
+            We believe that all the places listed below are worthy of your limited time in our city. Scroll further to see our personal favourites.
           </p>
         </div>
 

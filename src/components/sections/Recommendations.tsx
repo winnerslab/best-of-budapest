@@ -148,10 +148,10 @@ export function Recommendations() {
         <div className="mb-8">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Local picks</p>
           <h2 className="text-section font-bold text-text-primary">
-            Our favourites by category
+            Our <span className="text-accent">favourites</span> by category
           </h2>
           <p className="text-text-secondary mt-2">
-            We believe that all the places listed below are worthy of your limited time in our city. Scroll further to see our personal favourites.
+            Everything we&apos;d tell a friend on their first trip to Budapest.
           </p>
         </div>
 
