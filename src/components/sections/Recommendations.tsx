@@ -116,6 +116,7 @@ function mapsUrl(query: string): string {
 
 export function Recommendations() {
   const [activeId, setActiveId] = useState(categories[0].id)
+  const [expandedPlace, setExpandedPlace] = useState<string | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -178,32 +179,62 @@ export function Recommendations() {
 
         {/* Place cards */}
         <div className="flex flex-col gap-3">
-          {active.places.map((place) => (
-            <div
-              key={place.name}
-              className="flex items-start justify-between gap-4 bg-base-card border border-base-border rounded-2xl p-4"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="font-semibold text-text-primary text-sm leading-snug">
-                  {/* Strip the trailing " Budapest" from display names */}
-                  {place.name.replace(/ Budapest$/, '')}
-                </div>
-                {place.tip && (
-                  <p className="text-xs text-text-muted mt-1 leading-relaxed">{place.tip}</p>
-                )}
-              </div>
-              <a
-                href={mapsUrl(place.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent('card_click', { category: 'recommendations_maps', label: place.name })}
-                className="shrink-0 flex items-center gap-1.5 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-secondary text-xs font-medium px-3 py-2 rounded-xl transition-all duration-200 active:scale-95"
+          {active.places.map((place) => {
+            const isExpanded = expandedPlace === place.name
+            
+            return (
+              <div
+                key={place.name}
+                className={`flex flex-col bg-base-card border rounded-2xl overflow-hidden transition-all duration-300 ${
+                  isExpanded ? 'border-accent/50 shadow-[0_0_15px_rgba(var(--color-accent),0.1)]' : 'border-base-border'
+                }`}
               >
-                <span>📍</span>
-                Maps
-              </a>
-            </div>
-          ))}
+                {/* Clickable Header Row */}
+                <button 
+                  onClick={() => setExpandedPlace(isExpanded ? null : place.name)}
+                  className="flex items-start justify-between gap-4 p-4 text-left w-full hover:bg-base-elevated/30 transition-colors"
+                  aria-expanded={isExpanded}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-text-primary text-sm leading-snug transition-transform duration-300">
+                      {place.name.replace(/ Budapest$/, '')}
+                    </div>
+                    {place.tip && (
+                      <p className="text-xs text-text-muted mt-1 leading-relaxed">{place.tip}</p>
+                    )}
+                  </div>
+                  {/* Keep Maps button clickable without expanding/collapsing the card */}
+                  <a
+                    href={mapsUrl(place.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      trackEvent('card_click', { category: 'recommendations_maps', label: place.name })
+                    }}
+                    className="shrink-0 flex items-center gap-1.5 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-secondary text-xs font-medium px-3 py-2 rounded-xl transition-all duration-200 active:scale-95"
+                  >
+                    <span>📍</span>
+                    Maps
+                  </a>
+                </button>
+
+                {/* Expandable Content (Images Placeholder) */}
+                <div 
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                    isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="mx-4 mt-1 mb-4 pt-4 pb-5 px-4 border-t border-base-border/30 bg-base-elevated/30 rounded-xl flex flex-col items-center justify-center text-center">
+                      <span className="text-xl mb-2 opacity-50">🖼️</span>
+                      <p className="text-sm font-medium text-text-secondary">Images coming soon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
 
         {/* Count */}
