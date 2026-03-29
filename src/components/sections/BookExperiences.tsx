@@ -4,7 +4,17 @@ import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { trackEvent } from '@/lib/analytics'
 
-const experiences = [
+interface Experience {
+  id: string
+  icon: string
+  title: string
+  description: string
+  href: string
+  tag?: string
+  tagColor?: 'accent' | 'warm'
+}
+
+const experiences: Experience[] = [
   {
     id: 'party-boat',
     icon: '🛥️',

@@ -99,7 +99,6 @@ export function FeaturedPathways() {
                   variant={getButtonVariant(pathway.variant)}
                   size="sm"
                   href={pathway.href}
-                  trackingLabel={`pathway_${pathway.id}`}
                 >
                   {pathway.cta} →
                 </Button>
