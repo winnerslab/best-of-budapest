@@ -6,7 +6,7 @@ import { trackEvent } from '@/lib/analytics'
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-center px-4 pt-16 pb-8 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col justify-start px-4 pt-[20vh] pb-8 overflow-hidden">
       <Image
         src="/images/hero-bg-3.jpg"
         alt="Budapest Hero Background"
@@ -14,7 +14,7 @@ export function Hero() {
         className="object-cover object-bottom -z-20"
         priority
       />
-      <div className="absolute inset-0 bg-black/70 -z-10" />
+      <div className="absolute inset-0 bg-black/40 -z-10" />
       {/* Top bar */}
       <div className="absolute top-0 left-0 right-0 px-4 py-5 flex items-center justify-between">
         <span className="text-text-primary font-bold text-lg tracking-tight">

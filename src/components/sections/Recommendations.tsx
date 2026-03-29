@@ -120,7 +120,7 @@ export function Recommendations() {
   const active = categories.find((c) => c.id === activeId) ?? categories[0]
 
   return (
-    <section id="recommendations" className="px-4">
+    <section id="recommendations" className="px-4 py-20">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
