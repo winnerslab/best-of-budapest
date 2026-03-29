@@ -8,10 +8,10 @@ export function Hero() {
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-center px-4 pt-16 pb-8 overflow-hidden">
       <Image
-        src="/images/hero-bg.jpg"
+        src="/images/hero-bg-2.jpg"
         alt="Budapest Hero Background"
         fill
-        className="object-cover object-center -z-20"
+        className="object-contain object-center -z-20"
         priority
       />
       <div className="absolute inset-0 bg-black/70 -z-10" />
@@ -49,12 +49,6 @@ export function Hero() {
           built for tourists who want great recommendations fast.
         </p>
 
-        {/* Trust line */}
-        <p className="text-sm text-text-muted">
-          We work Budapest party boats, prosecco cruises, and pub crawls every week.
-          We get asked these questions constantly.
-        </p>
-
         {/* CTA pair */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
           <Button
@@ -63,7 +57,7 @@ export function Hero() {
             href="#explore"
             trackingLabel="hero_explore"
           >
-            Explore Budapest now
+            Take me to The List
           </Button>
           <Button
             size="lg"
@@ -71,7 +65,7 @@ export function Hero() {
             href="#map"
             trackingLabel="hero_premium_map"
           >
-            Get the premium map
+            Buy me a beer 🍺
           </Button>
         </div>
 
