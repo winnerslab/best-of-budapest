@@ -34,7 +34,7 @@ export function Hero() {
         {/* Trust badge */}
         <div className="inline-flex items-center gap-2 bg-base-elevated border border-base-border rounded-full px-4 py-1.5 text-sm text-text-secondary mx-auto">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
-          Live in Budapest — updated weekly
+          Budapest Top Picks - updated weekly
         </div>
 
         {/* Headline */}
@@ -69,10 +69,6 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Founder credibility */}
-        <p className="text-xs text-text-muted pt-2">
-          Built by George, Chris &amp; Calvin — bartenders, pub crawl guides, and party boat hosts
-        </p>
       </div>
 
       {/* Scroll indicator */}

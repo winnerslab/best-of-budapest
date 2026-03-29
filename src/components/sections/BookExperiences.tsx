@@ -58,8 +58,8 @@ export function BookExperiences() {
         <div className="mb-8">
           <p className="text-warm text-sm font-semibold uppercase tracking-widest mb-2">Book now</p>
           <h2 className="text-section font-bold text-text-primary">
-            Experiences we&apos;d{' '}
-            <span className="text-gradient-warm">recommend first</span>
+            Tickets you should{' '}
+            <span className="text-gradient-warm">book right now</span>
           </h2>
           <p className="text-text-secondary mt-2">
             Popular with our guests — and places we actually work and know inside out.

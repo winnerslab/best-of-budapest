@@ -3,21 +3,21 @@ import { Card } from '@/components/ui/Card'
 const founders = [
   {
     name: 'George "Ru" Oosthuizen',
-    role: 'Party Boat Host & Pub Crawl Guide',
+    role: 'Bartender & Local Expert',
     bio: "Hosts prosecco cruises on the Danube and leads pub crawls through the ruin bar district every week.",
     emoji: '🛥️',
     initials: 'GR',
   },
   {
     name: 'Chris Thomson',
-    role: 'Bartender & Guest Manager',
+    role: 'Guest Manager & Pub Crawl Leader',
     bio: "Bar-backs at some of Budapest's best venues and manages international guests at major nightlife events.",
     emoji: '🍸',
     initials: 'CT',
   },
   {
     name: 'Calvin Kriel',
-    role: 'Pub Crawl Leader & Local Expert',
+    role: 'Bartender & Event Management',
     bio: 'Has led hundreds of pub crawl groups through Budapest and knows every ruin bar, hidden bar, and gem in the city.',
     emoji: '🏙️',
     initials: 'CK',

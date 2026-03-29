@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { trackEvent } from '@/lib/analytics'
 
 interface Place {
@@ -116,20 +116,41 @@ function mapsUrl(query: string): string {
 
 export function Recommendations() {
   const [activeId, setActiveId] = useState(categories[0].id)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    )
+    
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   const active = categories.find((c) => c.id === activeId) ?? categories[0]
 
   return (
-    <section id="recommendations" className="px-4 py-20">
-      <div className="max-w-2xl mx-auto">
+    <section id="recommendations" ref={sectionRef} className="px-4 py-20">
+      <div 
+        className={`max-w-2xl mx-auto transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
         {/* Header */}
         <div className="mb-8">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Local picks</p>
           <h2 className="text-section font-bold text-text-primary">
-            Our recommendations
+            Our favourites by category
           </h2>
           <p className="text-text-secondary mt-2">
-            Every place we&apos;d send a friend on their first night in Budapest.
+            We believe that all the places listed below are worthy of your limited time in our city. Scroll further to see our personal favourites.
           </p>
         </div>
 
