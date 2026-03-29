@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/Hero'
 import { QuickChoice } from '@/components/sections/QuickChoice'
 import { WhyTrustUs } from '@/components/sections/WhyTrustUs'
 import { FeaturedPathways } from '@/components/sections/FeaturedPathways'
+import { Recommendations } from '@/components/sections/Recommendations'
 import { PremiumMap } from '@/components/sections/PremiumMap'
 import { BookExperiences } from '@/components/sections/BookExperiences'
 import { SocialProof } from '@/components/sections/SocialProof'
@@ -19,6 +20,7 @@ export default function HomePage() {
       <QuickChoice />
       <WhyTrustUs />
       <FeaturedPathways />
+      <Recommendations />
       <PremiumMap />
       <BookExperiences />
       <SocialProof />

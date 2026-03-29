@@ -13,13 +13,13 @@ interface Tile {
 
 const tiles: Tile[] = [
   { id: 'first-time', icon: '🗺️', title: 'First time in Budapest', label: 'Start here', href: '#itineraries', accent: 'green' },
-  { id: 'nightlife', icon: '🍺', title: 'Best nightlife tonight', label: 'Bars, clubs & crawls', href: '#experiences', accent: 'warm' },
-  { id: 'food', icon: '🥘', title: 'Best food near me', label: 'Local picks only', href: '#itineraries' },
+  { id: 'nightlife', icon: '🍺', title: 'Best nightlife tonight', label: 'Bars, clubs & crawls', href: '#recommendations', accent: 'warm' },
+  { id: 'food', icon: '🥘', title: 'Best food near me', label: 'Local picks only', href: '#recommendations' },
   { id: 'one-day', icon: '⚡', title: '1-day itinerary', label: 'See it all, fast', href: '#itineraries' },
   { id: 'two-day', icon: '📅', title: '2–3 day itinerary', label: 'The full experience', href: '#itineraries' },
-  { id: 'budget', icon: '💸', title: 'Budget-friendly', label: 'Amazing on less', href: '#itineraries' },
-  { id: 'brunch', icon: '☕', title: 'Brunch & coffee', label: 'Morning sorted', href: '#food' },
-  { id: 'hidden', icon: '🔍', title: 'Hidden gems', label: 'Beyond the tourist trail', href: '#itineraries', accent: 'green' },
+  { id: 'budget', icon: '💸', title: 'Budget-friendly', label: 'Amazing on less', href: '#recommendations' },
+  { id: 'brunch', icon: '☕', title: 'Brunch & coffee', label: 'Morning sorted', href: '#recommendations' },
+  { id: 'hidden', icon: '🔍', title: 'Hidden gems', label: 'Beyond the tourist trail', href: '#recommendations', accent: 'green' },
   { id: 'tickets', icon: '🎟️', title: 'Best boat & party tickets', label: 'Lock in your plans', href: '#experiences', accent: 'warm' },
   { id: 'map', icon: '📍', title: 'Premium local map', label: 'Every great spot, one tap', href: '#map', accent: 'green' },
 ]
