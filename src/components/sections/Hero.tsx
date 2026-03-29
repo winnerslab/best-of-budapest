@@ -1,14 +1,20 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { trackEvent } from '@/lib/analytics'
 
 export function Hero() {
   return (
-    <section
-      className="relative min-h-[100svh] flex flex-col justify-center px-4 pt-16 pb-8"
-      style={{ background: 'var(--gradient-hero)' }}
-    >
+    <section className="relative min-h-[100svh] flex flex-col justify-center px-4 pt-16 pb-8 overflow-hidden">
+      <Image
+        src="/images/hero-bg.jpg"
+        alt="Budapest Hero Background"
+        fill
+        className="object-cover object-center -z-20"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/70 -z-10" />
       {/* Top bar */}
       <div className="absolute top-0 left-0 right-0 px-4 py-5 flex items-center justify-between">
         <span className="text-text-primary font-bold text-lg tracking-tight">
@@ -33,9 +39,8 @@ export function Hero() {
 
         {/* Headline */}
         <h1 className="text-hero font-black text-text-primary">
-          Budapest recommendations{' '}
-          <span className="text-gradient-accent">from locals</span>{' '}
-          who actually work the city
+          The Best{' '}
+          <span className="text-gradient-accent">Budapest Itinerary</span>
         </h1>
 
         {/* Subheadline */}

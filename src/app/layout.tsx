@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   keywords: 'Budapest, local guide, nightlife Budapest, Budapest restaurants, Budapest itinerary, party boat Budapest',
   openGraph: {
     title: 'Best of Budapest',
-    description: 'The Budapest cheat sheet from locals who actually work the city.',
+    description: 'The Best Budapest Itinerary',
     siteName: 'Best of Budapest',
     locale: 'en_GB',
     type: 'website',
