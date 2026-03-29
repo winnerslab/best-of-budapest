@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     type: 'website',
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export const viewport: Viewport = {
@@ -34,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`dark ${inter.variable}`}>
       <body className="bg-base-black text-text-primary antialiased">
         {children}
       </body>

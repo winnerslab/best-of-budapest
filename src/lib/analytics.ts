@@ -1,4 +1,4 @@
-type EventName =
+export type EventName =
   | 'hero_cta_click'
   | 'card_click'
   | 'premium_map_cta_click'
@@ -7,7 +7,7 @@ type EventName =
   | 'partner_click'
   | 'scroll_depth'
 
-interface TrackEventOptions {
+export interface TrackEventOptions {
   label?: string
   category?: string
   value?: number
