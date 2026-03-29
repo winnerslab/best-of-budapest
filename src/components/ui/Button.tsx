@@ -1,3 +1,5 @@
+'use client'
+
 import { ButtonHTMLAttributes, AnchorHTMLAttributes, forwardRef } from 'react'
 import { trackEvent } from '@/lib/analytics'
 
