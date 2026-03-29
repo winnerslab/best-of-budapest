@@ -8,10 +8,10 @@ export function Hero() {
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-center px-4 pt-16 pb-8 overflow-hidden">
       <Image
-        src="/images/hero-bg-2.jpg"
+        src="/images/hero-bg-3.jpg"
         alt="Budapest Hero Background"
         fill
-        className="object-contain object-center -z-20"
+        className="object-cover object-bottom -z-20"
         priority
       />
       <div className="absolute inset-0 bg-black/70 -z-10" />
