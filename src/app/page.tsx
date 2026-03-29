@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/Hero'
 import { QuickChoice } from '@/components/sections/QuickChoice'
 import { WhyTrustUs } from '@/components/sections/WhyTrustUs'
 import { FeaturedPathways } from '@/components/sections/FeaturedPathways'
+import { RecommendationsList } from '@/components/sections/RecommendationsList'
 import { Recommendations } from '@/components/sections/Recommendations'
 import { PremiumMap } from '@/components/sections/PremiumMap'
 import { BookExperiences } from '@/components/sections/BookExperiences'
@@ -17,6 +18,7 @@ export default function HomePage() {
     <main className="relative">
       <ScrollDepthTracker />
       <Hero />
+      <RecommendationsList />
       <QuickChoice />
       <WhyTrustUs />
       <FeaturedPathways />
