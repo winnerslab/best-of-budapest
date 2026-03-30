@@ -66,7 +66,7 @@ export function ReviewPopup() {
 
         {/* CTA */}
         <a
-          href="https://www.tripadvisor.com/AttractionProductReview-g274887-d26585020-Budapest_Sip_and_Sail_Danube_Cruise_with_Unlimited_Prosecco-Budapest_Central_Hunga.html"
+          href="https://www.tripadvisor.com/UserReviewEdit-g274887-d26585020-Budapest_Sip_and_Sail_Danube_Cruise_with_Unlimited_Prosecco-Budapest_Central_Hungary.html"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => {
