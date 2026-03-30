@@ -51,14 +51,18 @@ export function ReviewPopup() {
         {/* Icon */}
         <div className="text-4xl mb-3 text-center">🤑</div>
 
-        {/* Message */}
-        <p className="text-text-primary font-semibold text-base text-center leading-snug mb-2">
-          Did you know that if you leave a review which mentions our names, we get a 5€ tip per review!
-        </p>
+        {/* Title */}
+        <h3 className="text-warm font-bold text-xl text-center mb-2">
+          Did you know?
+        </h3>
 
-        <p className="text-text-muted text-sm text-center leading-relaxed mb-5">
-          (Don&apos;t forget to sign in at the end or the review won&apos;t count! 🥲)
-        </p>
+        {/* Message */}
+        <div className="text-text-secondary text-sm text-center leading-relaxed mb-5 space-y-2">
+          <p>We earn a <strong className="text-text-primary">5€ tip</strong> for every review that mentions our names!</p>
+          <p className="text-xs text-text-muted italic">
+            (Just remember to sign in, otherwise it won't count 🥲)
+          </p>
+        </div>
 
         {/* CTA */}
         <a
