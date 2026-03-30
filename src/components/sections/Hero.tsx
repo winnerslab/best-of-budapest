@@ -43,6 +43,7 @@ export function Hero() {
             variant="primary"
             href="#explore"
             trackingLabel="hero_explore"
+            className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
           >
             Get the list 📍
           </Button>
@@ -51,6 +52,7 @@ export function Hero() {
             variant="secondary"
             href="#map"
             trackingLabel="hero_premium_map"
+            className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
           >
             Buy me a beer 🍺
           </Button>
