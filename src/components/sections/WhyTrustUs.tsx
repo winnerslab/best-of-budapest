@@ -9,7 +9,7 @@ const founders = [
     initials: 'GR',
     instagrams: [
       { url: 'https://www.instagram.com/ru_oost/', label: 'IG' },
-      { url: 'https://www.instagram.com/ru_active/', label: 'Gym' },
+      { url: 'https://www.instagram.com/ru_active/', label: 'Gym IG' },
     ],
   },
   {
@@ -20,7 +20,7 @@ const founders = [
     initials: 'CT',
     instagrams: [
       { url: 'https://www.instagram.com/chris.james.thomson/', label: 'IG' },
-      { url: 'https://www.instagram.com/thomson.rsa/', label: 'DJ' },
+      { url: 'https://www.instagram.com/thomson.rsa/', label: 'DJ IG' },
     ],
   },
   {
@@ -75,14 +75,14 @@ export function WhyTrustUs() {
                   <div className="text-xs text-accent font-medium mt-0.5">{founder.role}</div>
                   <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">{founder.bio}</p>
                 </div>
-                <div className="shrink-0 flex flex-col gap-1.5 self-stretch">
+                <div className="shrink-0 w-[72px] flex flex-col gap-1.5 self-stretch">
                   {founder.instagrams.map((ig) => (
                     <a
                       key={ig.url}
                       href={ig.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1 border text-xs font-medium px-2.5 rounded-lg transition-all duration-200 active:scale-95"
+                      className="flex-1 w-full flex items-center justify-center gap-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
                       style={{
                         background: 'rgba(225,48,108,0.12)',
                         borderColor: 'rgba(225,48,108,0.35)',
