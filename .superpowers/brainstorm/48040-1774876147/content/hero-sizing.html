@@ -1,0 +1,222 @@
+<style>
+  .phone-frame {
+    width: 260px;
+    background: #0a0a0a;
+    border-radius: 32px;
+    border: 2px solid #333;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+    color: #f0f0f0;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    padding: 20px 16px 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 40%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23111"/></svg>');
+    background-color: #0d1a1a;
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .phone-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .phone-topbar .logo { font-weight: 700; font-size: 13px; }
+  .phone-topbar .logo span { color: #00c896; }
+  .phone-topbar .navlink { font-size: 11px; color: #a0a0a0; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #252525;
+    border: 1px solid #2a2a2a;
+    border-radius: 100px;
+    padding: 4px 10px;
+    font-size: 10px;
+    color: #a0a0a0;
+    margin-bottom: 12px;
+    align-self: flex-start;
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #00c896; }
+  .hero-content { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .tag { font-size: 9px; color: #00c896; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0; }
+  .accent { background: linear-gradient(135deg, #00c896, #00e0a8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .subtitle { font-size: 12px; color: #a0a0a0; line-height: 1.5; }
+  .btn-primary {
+    background: #00c896; color: #0a0a0a; font-weight: 600; border-radius: 14px;
+    text-align: center; display: block; font-size: 14px; padding: 10px;
+  }
+  .btn-secondary {
+    background: #252525; color: #f0f0f0; font-weight: 500; border-radius: 14px;
+    text-align: center; display: block; font-size: 14px; padding: 10px;
+    border: 1px solid #2a2a2a; margin-top: 6px;
+  }
+
+  /* Current - too big */
+  .h1-current { font-size: 28px; font-weight: 900; line-height: 1.1; color: #f0f0f0; }
+  .subtitle-current { font-size: 14px; color: #a0a0a0; line-height: 1.5; }
+  .btn-current-primary {
+    background: #00c896; color: #0a0a0a; font-weight: 600; border-radius: 16px;
+    text-align: center; display: block; font-size: 16px; padding: 14px 16px;
+  }
+  .btn-current-secondary {
+    background: #252525; color: #f0f0f0; font-weight: 500; border-radius: 16px;
+    text-align: center; display: block; font-size: 16px; padding: 14px 16px;
+    border: 1px solid #2a2a2a; margin-top: 8px;
+  }
+
+  /* Option A - tighter text, md buttons */
+  .h1-a { font-size: 22px; font-weight: 900; line-height: 1.1; color: #f0f0f0; }
+  .subtitle-a { font-size: 13px; color: #a0a0a0; line-height: 1.5; }
+  .btn-a-primary {
+    background: #00c896; color: #0a0a0a; font-weight: 600; border-radius: 14px;
+    text-align: center; display: block; font-size: 14px; padding: 10px 16px;
+  }
+  .btn-a-secondary {
+    background: #252525; color: #f0f0f0; font-weight: 500; border-radius: 14px;
+    text-align: center; display: block; font-size: 14px; padding: 10px 16px;
+    border: 1px solid #2a2a2a; margin-top: 6px;
+  }
+
+  /* Option B - compact, side-by-side buttons */
+  .h1-b { font-size: 24px; font-weight: 900; line-height: 1.15; color: #f0f0f0; }
+  .subtitle-b { font-size: 13px; color: #a0a0a0; line-height: 1.5; }
+  .btn-row { display: flex; gap: 8px; }
+  .btn-b-primary {
+    flex: 1; background: #00c896; color: #0a0a0a; font-weight: 600; border-radius: 14px;
+    text-align: center; display: block; font-size: 13px; padding: 10px 8px;
+  }
+  .btn-b-secondary {
+    flex: 1; background: #252525; color: #f0f0f0; font-weight: 500; border-radius: 14px;
+    text-align: center; display: block; font-size: 13px; padding: 10px 8px;
+    border: 1px solid #2a2a2a;
+  }
+
+  .phones-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 16px 0;
+  }
+  .phone-label {
+    text-align: center;
+    font-size: 12px;
+    color: #a0a0a0;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .phone-label.current-label { color: #ff6b6b; }
+  .phone-wrapper { display: flex; flex-direction: column; align-items: center; }
+  .issue-tag {
+    background: #1a0a0a;
+    border: 1px solid #ff4444;
+    color: #ff8888;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+  .good-tag {
+    background: #0a1a0a;
+    border: 1px solid #00c896;
+    color: #00c896;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+  .neutral-tag {
+    background: #1a1a0a;
+    border: 1px solid #f5a623;
+    color: #f5a623;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+</style>
+
+<h2>Hero section: current vs. two approaches</h2>
+<p class="subtitle">The title and buttons are oversized on mobile. Pick which direction feels right — or tell me to blend them.</p>
+
+<div class="phones-row">
+
+  <!-- CURRENT -->
+  <div class="phone-wrapper">
+    <div class="issue-tag">⚠ Current — too large</div>
+    <div class="phone-frame" style="opacity:0.7">
+      <div class="phone-screen">
+        <div class="phone-topbar">
+          <span class="logo">Best of <span>Budapest</span></span>
+          <span class="navlink">Premium map ↗</span>
+        </div>
+        <div class="badge"><span class="dot"></span> Budapest Top Picks - updated weekly</div>
+        <div class="hero-content">
+          <div class="h1-current">The Best <span class="accent">Budapest Itinerary</span></div>
+          <div class="subtitle-current">Food, nightlife, itineraries, ticket picks, and local favourites — built for tourists who want great recommendations fast.</div>
+          <div style="margin-top:8px">
+            <div class="btn-current-primary">Take me to The List</div>
+            <div class="btn-current-secondary">Buy me a beer 🍺</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label current-label">h1: 36px · buttons: lg</div>
+  </div>
+
+  <!-- OPTION A -->
+  <div class="phone-wrapper" style="cursor:pointer" onclick="toggleSelect(this.querySelector('.option'))" >
+    <div class="good-tag">Option A — tighter, stacked</div>
+    <div class="phone-frame option" data-choice="a" onclick="toggleSelect(this)" style="cursor:pointer">
+      <div class="phone-screen">
+        <div class="phone-topbar">
+          <span class="logo">Best of <span>Budapest</span></span>
+          <span class="navlink">Premium map ↗</span>
+        </div>
+        <div class="badge"><span class="dot"></span> Budapest Top Picks - updated weekly</div>
+        <div class="hero-content">
+          <div class="h1-a">The Best <span class="accent">Budapest Itinerary</span></div>
+          <div class="subtitle-a">Food, nightlife, itineraries, ticket picks, and local favourites — built for tourists fast.</div>
+          <div style="margin-top:8px">
+            <div class="btn-a-primary">Take me to The List</div>
+            <div class="btn-a-secondary">Buy me a beer 🍺</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">h1: 22px · buttons: md · still stacked</div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="phone-wrapper">
+    <div class="neutral-tag">Option B — side-by-side buttons</div>
+    <div class="phone-frame option" data-choice="b" onclick="toggleSelect(this)" style="cursor:pointer">
+      <div class="phone-screen">
+        <div class="phone-topbar">
+          <span class="logo">Best of <span>Budapest</span></span>
+          <span class="navlink">Premium map ↗</span>
+        </div>
+        <div class="badge"><span class="dot"></span> Budapest Top Picks - updated weekly</div>
+        <div class="hero-content">
+          <div class="h1-b">The Best <span class="accent">Budapest Itinerary</span></div>
+          <div class="subtitle-b">Food, nightlife, itineraries, ticket picks, and local favourites — built for tourists fast.</div>
+          <div style="margin-top:8px" class="btn-row">
+            <div class="btn-b-primary">Take me to The List</div>
+            <div class="btn-b-secondary">Buy me a beer 🍺</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">h1: 24px · side-by-side buttons</div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:8px">
+  <p class="subtitle" style="text-align:center">Click a phone to select it, or tell me in the terminal what you prefer.</p>
+</div>
