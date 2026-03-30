@@ -6,7 +6,7 @@ import { trackEvent } from '@/lib/analytics'
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-start px-4 pt-[20vh] pb-8 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col justify-start px-4 pt-[10vh] pb-8 overflow-hidden">
       <Image
         src="/images/hero-bg-3.jpg"
         alt="Budapest Hero Background"
@@ -15,22 +15,9 @@ export function Hero() {
         priority
       />
       <div className="absolute inset-0 bg-black/40 -z-10" />
-      {/* Top bar */}
-      <div className="absolute top-0 left-0 right-0 px-4 py-5 flex items-center justify-between">
-        <span className="text-text-primary font-bold text-lg tracking-tight">
-          Best of<span className="text-gradient-accent"> Budapest</span>
-        </span>
-        <a
-          href="#map"
-          onClick={() => trackEvent('hero_cta_click', { label: 'nav_premium_map' })}
-          className="text-sm text-text-secondary hover:text-accent transition-colors"
-        >
-          Premium map ↗
-        </a>
-      </div>
 
       {/* Hero content */}
-      <div className="max-w-2xl mx-auto w-full text-center flex flex-col gap-6">
+      <div className="max-w-2xl mx-auto w-full text-center flex flex-col gap-3">
         {/* Trust badge */}
         <div className="inline-flex items-center gap-2 bg-base-elevated border border-base-border rounded-full px-4 py-1.5 text-sm text-text-secondary mx-auto">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
@@ -38,29 +25,29 @@ export function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-hero font-black text-text-primary">
+        <h1 className="text-[1.5rem] sm:text-hero font-black text-text-primary">
           The Best{' '}
           <span className="text-gradient-accent">Budapest Itinerary</span>
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg text-text-secondary max-w-lg mx-auto leading-relaxed">
+        <p className="text-sm sm:text-lg text-text-secondary max-w-lg mx-auto leading-relaxed">
           Food, nightlife, itineraries, ticket picks, and local favourites —
           built for tourists who want great recommendations fast.
         </p>
 
         {/* CTA pair */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+        <div className="flex flex-row gap-3 justify-center pt-2">
           <Button
-            size="lg"
+            size="sm"
             variant="primary"
             href="#explore"
             trackingLabel="hero_explore"
           >
-            Take me to The List
+            Get the list 📍
           </Button>
           <Button
-            size="lg"
+            size="sm"
             variant="secondary"
             href="#map"
             trackingLabel="hero_premium_map"
