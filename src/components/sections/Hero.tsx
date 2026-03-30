@@ -64,7 +64,7 @@ export function Hero() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted">
         <span className="text-xs">Scroll to explore</span>
         <div className="w-5 h-8 border border-base-border rounded-full flex items-start justify-center p-1">
-          <div className="w-1 h-2 bg-accent rounded-full animate-bounce" />
+          <div className="w-1 h-2 bg-warm rounded-full animate-bounce" />
         </div>
       </div>
     </section>
