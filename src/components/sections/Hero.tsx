@@ -27,7 +27,7 @@ export function Hero() {
         {/* Headline */}
         <h1 className="text-[1.5rem] sm:text-hero font-black text-text-primary">
           The Best{' '}
-          <span className="text-gradient-accent">Budapest Itinerary</span>
+          <span className="text-gradient-warm">Budapest Itinerary</span>
         </h1>
 
         {/* Subheadline */}
