@@ -12,6 +12,7 @@ import { Partners } from '@/components/sections/Partners'
 import { Footer } from '@/components/sections/Footer'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { ScrollDepthTracker } from '@/components/ui/ScrollDepthTracker'
+import { ReviewPopup } from '@/components/ui/ReviewPopup'
 
 export default function HomePage() {
   return (
@@ -30,6 +31,7 @@ export default function HomePage() {
       <Partners />
       <Footer />
       <StickyMobileCTA />
+      <ReviewPopup />
     </main>
   )
 }
