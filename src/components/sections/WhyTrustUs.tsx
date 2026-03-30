@@ -7,6 +7,7 @@ const founders = [
     bio: "Hosts prosecco cruises on the Danube and leads pub crawls through the ruin bar district every week.",
     emoji: '🛥️',
     initials: 'GR',
+    instagram: 'https://www.instagram.com/ru_oost/',
   },
   {
     name: 'Chris Thomson',
@@ -14,6 +15,7 @@ const founders = [
     bio: "Bar-backs at some of Budapest's best venues and manages international guests at major nightlife events.",
     emoji: '🍸',
     initials: 'CT',
+    instagram: 'https://www.instagram.com/chris.james.thomson/',
   },
   {
     name: 'Calvin Kriel',
@@ -21,6 +23,7 @@ const founders = [
     bio: 'Has led hundreds of pub crawl groups through Budapest and knows every ruin bar, hidden bar, and gem in the city.',
     emoji: '🏙️',
     initials: 'CK',
+    instagram: 'https://www.instagram.com/calvin_kriel/',
   },
 ]
 
@@ -64,6 +67,16 @@ export function WhyTrustUs() {
                   <div className="text-xs text-accent font-medium mt-0.5">{founder.role}</div>
                   <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">{founder.bio}</p>
                 </div>
+                <a
+                  href={founder.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 flex items-center gap-1 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+                  aria-label={`${founder.name} on Instagram`}
+                >
+                  <span className="text-[11px]">📸</span>
+                  <span>IG</span>
+                </a>
               </div>
             </Card>
           ))}
