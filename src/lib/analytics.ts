@@ -6,6 +6,7 @@ export type EventName =
   | 'support_click'
   | 'partner_click'
   | 'scroll_depth'
+  | 'review_popup_click'
 
 export interface TrackEventOptions {
   label?: string
