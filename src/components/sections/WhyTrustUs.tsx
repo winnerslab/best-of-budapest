@@ -63,7 +63,7 @@ export function WhyTrustUs() {
         <div className="grid gap-3 mb-8">
           {founders.map((founder) => (
             <Card key={founder.name} variant="default" className="p-4">
-              <div className="flex items-start gap-4">
+              <div className="flex items-stretch gap-4">
                 <div className="w-12 h-12 rounded-full bg-base-elevated border border-base-border flex items-center justify-center text-sm font-bold text-accent shrink-0">
                   {founder.initials}
                 </div>
@@ -75,14 +75,19 @@ export function WhyTrustUs() {
                   <div className="text-xs text-accent font-medium mt-0.5">{founder.role}</div>
                   <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">{founder.bio}</p>
                 </div>
-                <div className="shrink-0 flex flex-col gap-1.5">
+                <div className="shrink-0 flex flex-col gap-1.5 self-stretch">
                   {founder.instagrams.map((ig) => (
                     <a
                       key={ig.url}
                       href={ig.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+                      className="flex-1 flex items-center justify-center gap-1 border text-xs font-medium px-2.5 rounded-lg transition-all duration-200 active:scale-95"
+                      style={{
+                        background: 'rgba(225,48,108,0.12)',
+                        borderColor: 'rgba(225,48,108,0.35)',
+                        color: '#E1306C',
+                      }}
                       aria-label={`${founder.name} on Instagram (${ig.label})`}
                     >
                       <span className="text-[11px]">📸</span>
