@@ -20,7 +20,7 @@ export function Hero() {
       <div className="max-w-2xl mx-auto w-full text-center flex flex-col gap-3">
         {/* Trust badge */}
         <div className="inline-flex items-center gap-2 bg-base-elevated border border-base-border rounded-full px-4 py-1.5 text-sm text-text-secondary mx-auto">
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
+          <span className="w-2 h-2 rounded-full bg-warm animate-pulse-glow" />
           Budapest Top Picks - updated weekly
         </div>
 
@@ -40,7 +40,7 @@ export function Hero() {
         <div className="flex flex-row gap-3 justify-center pt-2">
           <Button
             size="sm"
-            variant="primary"
+            variant="warm"
             href="#explore"
             trackingLabel="hero_explore"
             className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
