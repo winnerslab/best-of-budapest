@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     description: "Two hours on the Danube with an open bar, a DJ, and Budapest lit up at night. The most fun you'll have on the water.",
     tag: 'Most popular',
     tagColor: 'accent' as const,
-    href: '[PARTY_BOAT_LINK]',
+    href: 'https://ultimatebudapest.com/things-to-do',
   },
   {
     id: 'prosecco-cruise',
@@ -31,7 +31,7 @@ const experiences: Experience[] = [
     description: "Elegant evening on the Danube. Budapest's skyline, a glass in your hand, and a relaxed vibe for couples and groups alike.",
     tag: 'Great for couples',
     tagColor: 'warm' as const,
-    href: '[PROSECCO_CRUISE_LINK]',
+    href: 'https://ultimatebudapest.com/things-to-do',
   },
   {
     id: 'pub-crawl',
@@ -40,14 +40,14 @@ const experiences: Experience[] = [
     description: 'The definitive Budapest night out. Multiple venues, free shots, and a group of fellow travellers. Led by our own team.',
     tag: 'We run this',
     tagColor: 'accent' as const,
-    href: '[PUB_CRAWL_LINK]',
+    href: 'https://ultimatebudapest.com/things-to-do',
   },
   {
     id: 'day-trip',
     icon: '🏰',
     title: 'Day Trip: Visegrád & Esztergom',
     description: "A scenic day out from Budapest — castles, the Danube bend, and countryside you won't see from the city.",
-    href: '[DAY_TRIP_LINK]',
+    href: 'https://ultimatebudapest.com/things-to-do',
   },
 ]
 
