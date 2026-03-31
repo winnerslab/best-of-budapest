@@ -24,7 +24,7 @@ export function SupportUs() {
           <Button
             variant="warm"
             size="lg"
-            href="[TIP_LINK]"
+            href="https://buymeacoffee.com/ctchristhomson"
             onClick={() => trackEvent('support_click', { label: 'buy_us_a_beer' })}
           >
             Buy us a beer →
