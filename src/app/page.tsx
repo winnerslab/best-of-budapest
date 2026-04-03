@@ -9,6 +9,7 @@ import { BookExperiences } from '@/components/sections/BookExperiences'
 import { SocialProof } from '@/components/sections/SocialProof'
 import { SupportUs } from '@/components/sections/SupportUs'
 import { Partners } from '@/components/sections/Partners'
+import { AdvertiseWithUs } from '@/components/sections/AdvertiseWithUs'
 import { Footer } from '@/components/sections/Footer'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { ScrollDepthTracker } from '@/components/ui/ScrollDepthTracker'
@@ -29,6 +30,7 @@ export default function HomePage() {
       <SocialProof />
       <SupportUs />
       <Partners />
+      <AdvertiseWithUs />
       <Footer />
       <StickyMobileCTA />
       <ReviewPopup />
