@@ -64,8 +64,8 @@ export function WhyTrustUs() {
         <div className="grid gap-3 mb-8">
           {founders.map((founder) => (
             <Card key={founder.name} variant="default" className="p-4">
-              <div className="flex items-stretch gap-4">
-                <div className="w-12 h-12 rounded-full border border-base-border shrink-0 overflow-hidden relative">
+              <div className="flex items-start gap-4">
+                <div className="w-20 h-20 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative">
                   <Image
                     src={founder.photo}
                     alt={founder.name}
