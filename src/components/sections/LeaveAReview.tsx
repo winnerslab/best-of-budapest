@@ -36,7 +36,7 @@ export function LeaveAReview() {
           </h2>
 
           <p className="text-text-secondary leading-relaxed mb-2 max-w-md mx-auto">
-            Every review that mentions <strong className="text-text-primary">Ru, Chris, or Calvin</strong> by name earns us a €5 tip from the company. That&apos;s beer money. That&apos;s motivation. That&apos;s the entire economy of this operation.
+            Every review that mentions <strong className="text-text-primary">Ru, Chris, or Calvin</strong>{' '}by name earns us a €5 tip from the company. That&apos;s beer money. That&apos;s motivation. That&apos;s the entire economy of this operation.
           </p>
 
           <p className="text-sm text-text-muted mb-6 max-w-sm mx-auto">
@@ -54,7 +54,7 @@ export function LeaveAReview() {
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-base-border bg-base-elevated text-sm font-semibold text-text-secondary hover:text-text-primary hover:border-text-muted active:scale-95 transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-warm/40 bg-base-elevated text-sm font-semibold text-text-secondary hover:text-text-primary hover:border-warm active:scale-95 transition-all duration-200"
               >
                 <span>{p.icon}</span>
                 {p.label}
