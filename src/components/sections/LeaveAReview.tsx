@@ -25,7 +25,7 @@ const platforms = [
 
 export function LeaveAReview() {
   return (
-    <section className="px-4" style={{ background: 'var(--gradient-section)' }}>
+    <section id="leave-a-review" className="px-4" style={{ background: 'var(--gradient-section)' }}>
       <div className="max-w-2xl mx-auto">
         <Card variant="elevated" className="p-8 text-center">
           <div className="text-4xl mb-4">⭐</div>

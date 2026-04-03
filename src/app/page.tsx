@@ -21,9 +21,9 @@ export default function HomePage() {
     <main className="relative">
       <ScrollDepthTracker />
       <Hero />
-      <LeaveAReview />
       <RecommendationsList />
       <WhyTrustUs />
+      <LeaveAReview />
       <FeaturedPathways />
       <Recommendations />
       <PremiumMap />
