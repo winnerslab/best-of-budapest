@@ -15,6 +15,8 @@ import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { ScrollDepthTracker } from '@/components/ui/ScrollDepthTracker'
 import { ReviewPopup } from '@/components/ui/ReviewPopup'
 
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   return (
     <main className="relative">
