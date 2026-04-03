@@ -1,12 +1,13 @@
+import Image from 'next/image'
 import { Card } from '@/components/ui/Card'
 
 const founders = [
   {
     name: 'George "Ru" Oosthuizen',
     role: 'Bartender & Local Expert',
-    bio: "Hosts prosecco cruises on the Danube and leads pub crawls through the ruin bar district every week.",
+    bio: "Has personally stress-tested Budapest's prosecco supply and somehow turned it into a public service. Equal parts boat host, nightlife scout, and professional bad-influence-with-good-intentions, Ru knows exactly where your night should start, peak, and get mildly irresponsible.",
     emoji: '🛥️',
-    initials: 'GR',
+    photo: '/images/profile-ru.png',
     instagrams: [
       { url: 'https://www.instagram.com/ru_oost/', label: 'IG' },
       { url: 'https://www.instagram.com/ru_active/', label: 'Gym IG' },
@@ -15,9 +16,9 @@ const founders = [
   {
     name: 'Chris Thomson',
     role: 'Guest Manager & Pub Crawl Leader',
-    bio: "Bar-backs at some of Budapest's best venues and manages international guests at major nightlife events.",
+    bio: "Specialises in herding confused tourists, locating lost pub crawlers, and keeping the chaos looking intentional. If your night runs smoothly, Chris was probably behind it. If it gets weird, he'll still somehow make it feel like part of the package.",
     emoji: '🍸',
-    initials: 'CT',
+    photo: '/images/profile-chris.png',
     instagrams: [
       { url: 'https://www.instagram.com/chris.james.thomson/', label: 'IG' },
       { url: 'https://www.instagram.com/thomson.rsa/', label: 'DJ IG' },
@@ -26,9 +27,9 @@ const founders = [
   {
     name: 'Calvin Kriel',
     role: 'Bartender & Event Management',
-    bio: 'Has led hundreds of pub crawl groups through Budapest and knows every ruin bar, hidden bar, and gem in the city.',
+    bio: "Knows Budapest nightlife like a man who's done extensive field research in dim lighting and loud music. From hidden bars to full-send party spots, Calvin can point you toward exactly the kind of evening your future self may or may not forgive.",
     emoji: '🏙️',
-    initials: 'CK',
+    photo: '/images/profile-calvin.png',
     instagrams: [
       { url: 'https://www.instagram.com/calvin_kriel/', label: 'IG' },
     ],
@@ -64,8 +65,13 @@ export function WhyTrustUs() {
           {founders.map((founder) => (
             <Card key={founder.name} variant="default" className="p-4">
               <div className="flex items-stretch gap-4">
-                <div className="w-12 h-12 rounded-full bg-base-elevated border border-base-border flex items-center justify-center text-sm font-bold text-accent shrink-0">
-                  {founder.initials}
+                <div className="w-12 h-12 rounded-full border border-base-border shrink-0 overflow-hidden relative">
+                  <Image
+                    src={founder.photo}
+                    alt={founder.name}
+                    fill
+                    className="object-cover object-top"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
