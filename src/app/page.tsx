@@ -1,5 +1,4 @@
 import { Hero } from '@/components/sections/Hero'
-import { QuickChoice } from '@/components/sections/QuickChoice'
 import { WhyTrustUs } from '@/components/sections/WhyTrustUs'
 import { FeaturedPathways } from '@/components/sections/FeaturedPathways'
 import { RecommendationsList } from '@/components/sections/RecommendationsList'
@@ -8,7 +7,6 @@ import { PremiumMap } from '@/components/sections/PremiumMap'
 import { BookExperiences } from '@/components/sections/BookExperiences'
 import { SocialProof } from '@/components/sections/SocialProof'
 import { SupportUs } from '@/components/sections/SupportUs'
-import { Partners } from '@/components/sections/Partners'
 import { AdvertiseWithUs } from '@/components/sections/AdvertiseWithUs'
 import { Footer } from '@/components/sections/Footer'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
@@ -23,7 +21,6 @@ export default function HomePage() {
       <ScrollDepthTracker />
       <Hero />
       <RecommendationsList />
-      <QuickChoice />
       <WhyTrustUs />
       <FeaturedPathways />
       <Recommendations />
@@ -31,7 +28,6 @@ export default function HomePage() {
       <BookExperiences />
       <SocialProof />
       <SupportUs />
-      <Partners />
       <AdvertiseWithUs />
       <Footer />
       <StickyMobileCTA />

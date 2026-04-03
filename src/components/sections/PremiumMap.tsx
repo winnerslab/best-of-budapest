@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { ComingSoonPopup } from '@/components/ui/ComingSoonPopup'
 import { trackEvent } from '@/lib/analytics'
 
 const features = [
@@ -23,6 +25,8 @@ const categories = [
 ]
 
 export function PremiumMap() {
+  const [showPopup, setShowPopup] = useState(false)
+
   return (
     <section
       id="map"
@@ -69,12 +73,15 @@ export function PremiumMap() {
           <Button
             variant="warm"
             size="lg"
-            href="[PREMIUM_MAP_LINK]"
             className="w-full sm:w-auto"
-            onClick={() => trackEvent('premium_map_cta_click', { label: 'unlock_map' })}
+            onClick={() => {
+              trackEvent('premium_map_cta_click', { label: 'unlock_map' })
+              setShowPopup(true)
+            }}
           >
             Unlock the premium map →
           </Button>
+          {showPopup && <ComingSoonPopup onClose={() => setShowPopup(false)} />}
           <p className="text-xs text-text-muted">
             One-time purchase. Yours forever.
           </p>
