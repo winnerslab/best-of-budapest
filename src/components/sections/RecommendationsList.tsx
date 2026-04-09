@@ -140,7 +140,15 @@ const groups: Group[] = [
     heading: 'Annual Events',
     icon: '🎉',
     places: [
-      { name: 'St Stephens Day Budapest', tip: 'Huge national celebration with fireworks over the Danube.' },
+      { name: 'St Stephens Day Budapest', tip: 'Huge national celebration on August 20th with fireworks over the Danube.' },
+      { name: 'National Day Budapest', tip: 'March 15th Revolution Day — city-wide parades, speeches, and red-white-green cockades; the city\'s patriotic spirit at its peak.' },
+      { name: 'Busójárás Mohács', tip: 'UNESCO-listed carnival (Feb/Mar) where locals don terrifying wooden masks to chase away winter — one of Europe\'s most unusual folk traditions.' },
+      { name: 'Easter Budapest', tip: 'Traditional Hungarian Easter (Húsvét) involves men playfully sprinkling women with water or perfume — expect painted eggs and seasonal markets.' },
+      { name: 'Budapest Wine Festival', tip: 'September festival at Buda Castle showcasing hundreds of Hungarian wines with live music and sweeping Danube views.' },
+      { name: 'Sziget Festival Budapest', tip: 'One of Europe\'s biggest music festivals — a week of world-class acts on an island in the Danube every August.' },
+      { name: 'Budapest Marathon', tip: 'October city marathon crossing all major bridges past iconic landmarks — great to spectate even if you\'re not running.' },
+      { name: 'Budapest Christmas Markets', tip: 'December markets at Vörösmarty Square and St. Stephen\'s Basilica — among Europe\'s most beautiful, with mulled wine, artisan stalls, and festive lights.' },
+      { name: 'New Years Eve Budapest', tip: 'Fireworks over the Danube, ruin bar parties, and city-wide Szilveszter celebrations — Budapest rings in the new year in style.' },
     ],
   },
 ]
@@ -213,6 +221,8 @@ export function RecommendationsList() {
             </div>
           ))}
         </div>
+
+        <div id="rec-list-end" />
       </div>
     </section>
   )

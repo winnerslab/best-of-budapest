@@ -64,8 +64,9 @@ export function WhyTrustUs() {
         <div className="grid gap-3 mb-8">
           {founders.map((founder) => (
             <Card key={founder.name} variant="default" className="p-4">
-              <div className="flex items-start gap-4">
-                <div className="w-20 h-20 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative">
+              {/* Header row: photo + name + role */}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-14 h-14 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative">
                   <Image
                     src={founder.photo}
                     alt={founder.name}
@@ -73,34 +74,38 @@ export function WhyTrustUs() {
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="font-semibold text-text-primary text-sm">{founder.name}</span>
-                    <span className="text-base">{founder.emoji}</span>
+                    <span className="text-sm">{founder.emoji}</span>
                   </div>
                   <div className="text-xs text-accent font-medium mt-0.5">{founder.role}</div>
-                  <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">{founder.bio}</p>
                 </div>
-                <div className="shrink-0 w-[72px] flex flex-col gap-1.5 self-stretch">
-                  {founder.instagrams.map((ig) => (
-                    <a
-                      key={ig.url}
-                      href={ig.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 w-full flex items-center justify-center gap-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
-                      style={{
-                        background: 'rgba(225,48,108,0.12)',
-                        borderColor: 'rgba(225,48,108,0.35)',
-                        color: '#E1306C',
-                      }}
-                      aria-label={`${founder.name} on Instagram (${ig.label})`}
-                    >
-                      <span className="text-[11px]">📸</span>
-                      <span>{ig.label}</span>
-                    </a>
-                  ))}
-                </div>
+              </div>
+
+              {/* Bio */}
+              <p className="text-xs text-text-secondary leading-relaxed mb-4">{founder.bio}</p>
+
+              {/* Buttons */}
+              <div className="flex flex-wrap gap-2">
+                {founder.instagrams.map((ig) => (
+                  <a
+                    key={ig.url}
+                    href={ig.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
+                    style={{
+                      background: 'rgba(225,48,108,0.12)',
+                      borderColor: 'rgba(225,48,108,0.35)',
+                      color: '#E1306C',
+                    }}
+                    aria-label={`${founder.name} on Instagram (${ig.label})`}
+                  >
+                    <span className="text-[11px]">📸</span>
+                    <span>{ig.label}</span>
+                  </a>
+                ))}
               </div>
             </Card>
           ))}

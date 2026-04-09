@@ -1,5 +1,8 @@
-import { Button } from '@/components/ui/Button'
+'use client'
+
+import { useState } from 'react'
 import { CurrentYear } from '@/components/ui/CurrentYear'
+import { AdvertiseWithUs } from '@/components/sections/AdvertiseWithUs'
 
 const navLinks = [
   { label: 'Itineraries', href: '#itineraries' },
@@ -10,6 +13,8 @@ const navLinks = [
 ]
 
 export function Footer() {
+  const [advertiseOpen, setAdvertiseOpen] = useState(false)
+
   return (
     <footer className="px-4 pt-16 pb-8 border-t border-base-border mt-8">
       <div className="max-w-2xl mx-auto">
@@ -24,9 +29,13 @@ export function Footer() {
         </div>
 
         <div className="mb-8">
-          <Button variant="primary" size="md" href="#explore" trackingLabel="footer_explore">
-            Explore Budapest now →
-          </Button>
+          <button
+            onClick={() => setAdvertiseOpen(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-200 active:scale-95 hover:brightness-110"
+            style={{ background: 'var(--color-warm)', color: '#0a0a0a' }}
+          >
+            Advertise with us →
+          </button>
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2 mb-8">
@@ -48,12 +57,12 @@ export function Footer() {
           >
             <span>📸</span> Instagram
           </a>
-          <a
-            href="mailto:hello@bestofbudapest.com"
+          <button
+            onClick={() => setAdvertiseOpen(true)}
             className="text-sm text-text-muted hover:text-accent transition-colors flex items-center gap-1.5"
           >
             <span>✉️</span> Partner with us
-          </a>
+          </button>
         </div>
 
         <div className="border-t border-base-border pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -66,6 +75,8 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      <AdvertiseWithUs isOpen={advertiseOpen} onClose={() => setAdvertiseOpen(false)} />
     </footer>
   )
 }

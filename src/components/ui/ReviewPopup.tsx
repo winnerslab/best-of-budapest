@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { trackEvent } from '@/lib/analytics'
 
 const STORAGE_KEY = 'review_popup_dismissed'
-const SCROLL_THRESHOLD = 400
 
 export function ReviewPopup() {
   const [visible, setVisible] = useState(false)
@@ -12,14 +11,20 @@ export function ReviewPopup() {
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return
 
-    const onScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        setVisible(true)
-        window.removeEventListener('scroll', onScroll)
-      }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const sentinel = document.getElementById('rec-list-end')
+    if (!sentinel) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0 }
+    )
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
   function dismiss() {

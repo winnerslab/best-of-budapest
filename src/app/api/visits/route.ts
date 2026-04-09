@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const key = `pageviews:${new Date().toISOString().slice(0, 7)}`
-    const raw = await redis.get(key) ?? '0'
-    return NextResponse.json({ count: Number(raw) })
+    const key = `pageviews:unique:${new Date().toISOString().slice(0, 7)}`
+    const count = await redis.scard(key)
+    return NextResponse.json({ count })
   } catch {
     return NextResponse.json({ count: 0 }, { status: 500 })
   }

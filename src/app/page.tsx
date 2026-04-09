@@ -8,7 +8,6 @@ import { PremiumMap } from '@/components/sections/PremiumMap'
 import { BookExperiences } from '@/components/sections/BookExperiences'
 import { SocialProof } from '@/components/sections/SocialProof'
 import { SupportUs } from '@/components/sections/SupportUs'
-import { AdvertiseWithUs } from '@/components/sections/AdvertiseWithUs'
 import { Footer } from '@/components/sections/Footer'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { ScrollDepthTracker } from '@/components/ui/ScrollDepthTracker'
@@ -30,7 +29,6 @@ export default function HomePage() {
       <BookExperiences />
       <SocialProof />
       <SupportUs />
-      <AdvertiseWithUs />
       <Footer />
       <StickyMobileCTA />
       <ReviewPopup />
