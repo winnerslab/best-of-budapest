@@ -64,9 +64,9 @@ export function WhyTrustUs() {
         <div className="grid gap-3 mb-8">
           {founders.map((founder) => (
             <Card key={founder.name} variant="default" className="p-4">
-              {/* Header row: photo + name + role */}
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-14 h-14 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative">
+              {/* Header: centred photo + name + role */}
+              <div className="flex flex-col items-center text-center mb-4">
+                <div className="w-24 h-24 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative mb-3">
                   <Image
                     src={founder.photo}
                     alt={founder.name}
@@ -74,13 +74,11 @@ export function WhyTrustUs() {
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="font-semibold text-text-primary text-sm">{founder.name}</span>
-                    <span className="text-sm">{founder.emoji}</span>
-                  </div>
-                  <div className="text-xs text-accent font-medium mt-0.5">{founder.role}</div>
+                <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                  <span className="font-semibold text-text-primary text-base">{founder.name}</span>
+                  <span className="text-base">{founder.emoji}</span>
                 </div>
+                <div className="text-xs text-accent font-medium mt-1">{founder.role}</div>
               </div>
 
               {/* Bio */}
