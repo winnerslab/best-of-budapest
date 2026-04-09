@@ -12,6 +12,7 @@ import { Footer } from '@/components/sections/Footer'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { ScrollDepthTracker } from '@/components/ui/ScrollDepthTracker'
 import { ReviewPopup } from '@/components/ui/ReviewPopup'
+import { PageViewsCounter } from '@/components/ui/PageViewsCounter'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,6 +30,7 @@ export default function HomePage() {
       <BookExperiences />
       <SocialProof />
       <SupportUs />
+      <PageViewsCounter />
       <Footer />
       <StickyMobileCTA />
       <ReviewPopup />
