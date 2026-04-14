@@ -12,6 +12,8 @@ interface Place {
   name: string
   tip?: string
   info?: PlaceInfo
+  calendarLabel?: string
+  calendarUrl?: string
 }
 
 interface Group {
@@ -309,15 +311,15 @@ const groups: Group[] = [
     heading: 'Annual Events',
     icon: '🎉',
     places: [
-      { name: 'St Stephens Day Budapest', tip: 'Huge national celebration on August 20th with fireworks over the Danube.' },
-      { name: 'National Day Budapest', tip: 'March 15th Revolution Day — city-wide parades, speeches, and red-white-green cockades; the city\'s patriotic spirit at its peak.' },
-      { name: 'Busójárás Mohács', tip: 'UNESCO-listed carnival (Feb/Mar) where locals don terrifying wooden masks to chase away winter — one of Europe\'s most unusual folk traditions.' },
-      { name: 'Easter Budapest', tip: 'Traditional Hungarian Easter (Húsvét) involves men playfully sprinkling women with water or perfume — expect painted eggs and seasonal markets.' },
-      { name: 'Budapest Wine Festival', tip: 'September festival at Buda Castle showcasing hundreds of Hungarian wines with live music and sweeping Danube views.' },
-      { name: 'Sziget Festival Budapest', tip: 'One of Europe\'s biggest music festivals — a week of world-class acts on an island in the Danube every August.' },
-      { name: 'Budapest Marathon', tip: 'October city marathon crossing all major bridges past iconic landmarks — great to spectate even if you\'re not running.' },
-      { name: 'Budapest Christmas Markets', tip: 'December markets at Vörösmarty Square and St. Stephen\'s Basilica — among Europe\'s most beautiful, with mulled wine, artisan stalls, and festive lights.' },
-      { name: 'New Years Eve Budapest', tip: 'Fireworks over the Danube, ruin bar parties, and city-wide Szilveszter celebrations — Budapest rings in the new year in style.' },
+      { name: 'St Stephens Day Budapest', tip: 'Huge national celebration on August 20th with fireworks over the Danube.', calendarLabel: 'Aug 20', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=St+Stephens+Day+Budapest&dates=20260820/20260821' },
+      { name: 'National Day Budapest', tip: 'March 15th Revolution Day — city-wide parades, speeches, and red-white-green cockades; the city\'s patriotic spirit at its peak.', calendarLabel: 'Mar 15', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=National+Day+Budapest&dates=20270315/20270316' },
+      { name: 'Busójárás Mohács', tip: 'UNESCO-listed carnival (Feb/Mar) where locals don terrifying wooden masks to chase away winter — one of Europe\'s most unusual folk traditions.', calendarLabel: 'Feb/Mar', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bus%C3%B3j%C3%A1r%C3%A1s+Moh%C3%A1cs' },
+      { name: 'Easter Budapest', tip: 'Traditional Hungarian Easter (Húsvét) involves men playfully sprinkling women with water or perfume — expect painted eggs and seasonal markets.', calendarLabel: 'April', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Easter+Budapest' },
+      { name: 'Budapest Wine Festival', tip: 'September festival at Buda Castle showcasing hundreds of Hungarian wines with live music and sweeping Danube views.', calendarLabel: 'Sep', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Budapest+Wine+Festival&dates=20260912/20260916' },
+      { name: 'Sziget Festival Budapest', tip: 'One of Europe\'s biggest music festivals — a week of world-class acts on an island in the Danube every August.', calendarLabel: 'Aug', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sziget+Festival+Budapest&dates=20260806/20260814' },
+      { name: 'Budapest Marathon', tip: 'October city marathon crossing all major bridges past iconic landmarks — great to spectate even if you\'re not running.', calendarLabel: 'Oct', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Budapest+Marathon&dates=20261011/20261012' },
+      { name: 'Budapest Christmas Markets', tip: 'December markets at Vörösmarty Square and St. Stephen\'s Basilica — among Europe\'s most beautiful, with mulled wine, artisan stalls, and festive lights.', calendarLabel: 'Dec', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Budapest+Christmas+Markets&dates=20261121/20261231' },
+      { name: 'New Years Eve Budapest', tip: 'Fireworks over the Danube, ruin bar parties, and city-wide Szilveszter celebrations — Budapest rings in the new year in style.', calendarLabel: 'Dec 31', calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=New+Years+Eve+Budapest&dates=20261231/20270101' },
     ],
   },
 ]
@@ -325,6 +327,21 @@ const groups: Group[] = [
 function mapsUrl(name: string): string {
   const query = name.toLowerCase().includes('budapest') ? name : `${name} Budapest`
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+}
+
+function CalendarButton({ label, url, name }: { label: string; url: string; name: string }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackEvent('card_click', { category: 'rec_list_calendar', label: name })}
+      className="shrink-0 inline-flex items-center gap-1 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+    >
+      <span className="text-[11px]">📅</span>
+      {label}
+    </a>
+  )
 }
 
 function MapsButton({ name }: { name: string }) {
@@ -371,7 +388,10 @@ function PlaceRow({ place }: { place: Place }) {
               {open ? 'Close' : 'Get info'}
             </button>
           )}
-          <MapsButton name={place.name} />
+          {place.calendarLabel && place.calendarUrl
+            ? <CalendarButton label={place.calendarLabel} url={place.calendarUrl} name={place.name} />
+            : <MapsButton name={place.name} />
+          }
         </div>
       </div>
 

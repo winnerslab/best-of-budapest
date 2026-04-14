@@ -28,7 +28,9 @@ export function LeaveAReview() {
     <section id="leave-a-review" className="px-4" style={{ background: 'var(--gradient-section)' }}>
       <div className="max-w-2xl mx-auto">
         <Card variant="elevated" className="p-8 text-center">
-          <div className="text-4xl mb-4">⭐</div>
+          <div className="flex justify-center gap-1 text-3xl mb-4">
+            <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+          </div>
 
           <h2 className="text-2xl font-bold text-text-primary mb-2">
             Had a good time?{' '}

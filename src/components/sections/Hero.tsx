@@ -36,26 +36,39 @@ export function Hero() {
           built for tourists who want great recommendations fast.
         </p>
 
-        {/* CTA pair */}
-        <div className="flex flex-row gap-3 justify-center pt-2">
-          <Button
-            size="sm"
-            variant="warm"
-            href="#explore"
-            trackingLabel="hero_explore"
-            className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
+        {/* CTA buttons */}
+        <div className="flex flex-col items-center gap-3 pt-2">
+          <div className="flex flex-row gap-3 justify-center">
+            <Button
+              size="sm"
+              variant="warm"
+              href="#recommendations"
+              trackingLabel="hero_explore"
+              className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
+            >
+              Get the list 📍
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              href="#map"
+              trackingLabel="hero_premium_map"
+              className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
+            >
+              Buy us a beer! 🍺
+            </Button>
+          </div>
+          <a
+            href="#leave-a-review"
+            className="inline-flex items-center justify-center gap-1.5 px-5 py-2 text-sm font-semibold rounded-xl transition-all duration-200 active:scale-95 sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
+            style={{
+              background: 'rgba(255,255,255,0.08)',
+              border: '1.5px solid #FBBF24',
+              color: '#FBBF24',
+            }}
           >
-            Get the list 📍
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            href="#map"
-            trackingLabel="hero_premium_map"
-            className="sm:px-8 sm:py-4 sm:text-lg sm:rounded-2xl"
-          >
-            Buy me a beer 🍺
-          </Button>
+            Tip 5€ by Reviewing Us! 🤩
+          </a>
         </div>
 
       </div>

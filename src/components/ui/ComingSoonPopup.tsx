@@ -51,7 +51,7 @@ export function ComingSoonPopup({ onClose }: ComingSoonPopupProps) {
             onClick={onClose}
             className="block w-full text-center bg-warm text-base-black font-semibold text-sm py-3 rounded-xl hover:bg-warm-light active:scale-95 transition-all duration-200 shadow-warm-glow"
           >
-            Buy me a beer 🍺
+            Buy us a beer! 🍺
           </a>
           <a
             href="https://www.tripadvisor.com/UserReviewEdit-g274887-d26585020-Budapest_Sip_and_Sail_Danube_Cruise_with_Unlimited_Prosecco-Budapest_Central_Hungary.html"

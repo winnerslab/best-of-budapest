@@ -23,6 +23,7 @@ const founders = [
       { url: 'https://www.instagram.com/chris.james.thomson/', label: 'IG' },
       { url: 'https://www.instagram.com/thomson.rsa/', label: 'DJ IG' },
     ],
+    beerUrl: 'https://buymeacoffee.com/ctchristhomson',
   },
   {
     name: 'Calvin Kriel',
@@ -104,6 +105,21 @@ export function WhyTrustUs() {
                     <span>{ig.label}</span>
                   </a>
                 ))}
+                {'beerUrl' in founder && founder.beerUrl && (
+                  <a
+                    href={founder.beerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
+                    style={{
+                      background: 'rgba(251,191,36,0.15)',
+                      borderColor: 'rgba(251,191,36,0.5)',
+                      color: '#FBBF24',
+                    }}
+                  >
+                    <span>Buy Chris a beer! 🍺</span>
+                  </a>
+                )}
               </div>
             </Card>
           ))}
