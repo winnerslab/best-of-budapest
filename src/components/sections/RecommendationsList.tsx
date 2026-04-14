@@ -336,7 +336,7 @@ function CalendarButton({ label, url, name }: { label: string; url: string; name
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackEvent('card_click', { category: 'rec_list_calendar', label: name })}
-      className="shrink-0 inline-flex items-center gap-1 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+      className="shrink-0 inline-flex items-center justify-center gap-1 w-20 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium py-1.5 rounded-lg transition-all duration-200 active:scale-95"
     >
       <span className="text-[11px]">📅</span>
       {label}
