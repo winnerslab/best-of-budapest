@@ -8,6 +8,7 @@ export type EventName =
   | 'scroll_depth'
   | 'review_popup_click'
   | 'buy_beer_click'
+  | 'reddit_share_click'
 
 export interface TrackEventOptions {
   label?: string

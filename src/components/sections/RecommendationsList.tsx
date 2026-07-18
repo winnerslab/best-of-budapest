@@ -335,8 +335,11 @@ function CalendarButton({ label, url, name }: { label: string; url: string; name
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackEvent('card_click', { category: 'rec_list_calendar', label: name })}
-      className="shrink-0 inline-flex items-center justify-center gap-1 w-20 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+      onClick={(e) => {
+        e.stopPropagation()
+        trackEvent('card_click', { category: 'rec_list_calendar', label: name })
+      }}
+      className="shrink-0 inline-flex items-center justify-center gap-1 w-20 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-secondary text-xs font-medium py-2 rounded-xl transition-all duration-200 active:scale-95"
     >
       <span className="text-[11px]">📅</span>
       {label}
@@ -350,37 +353,44 @@ function MapsButton({ name }: { name: string }) {
       href={mapsUrl(name)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackEvent('card_click', { category: 'rec_list_maps', label: name })}
-      className="shrink-0 inline-flex items-center gap-1 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-muted text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95"
+      onClick={(e) => {
+        e.stopPropagation()
+        trackEvent('card_click', { category: 'rec_list_maps', label: name })
+      }}
+      className="shrink-0 inline-flex items-center gap-1.5 bg-base-elevated border border-base-border hover:border-accent/40 hover:text-accent text-text-secondary text-xs font-medium px-3 py-2 rounded-xl transition-all duration-200 active:scale-95"
     >
-      <span className="text-[11px]">📍</span>
+      <span>📍</span>
       Maps
     </a>
   )
 }
 
-function PlaceRow({ place }: { place: Place }) {
+function PlaceCard({ place }: { place: Place }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <li className="flex flex-col border-b border-base-border/50 last:border-0">
-      <div className="flex items-start justify-between gap-3 py-2">
+    <div
+      className={`flex flex-col bg-base-card border rounded-2xl overflow-hidden transition-all duration-300 ${
+        open ? 'border-accent/50' : 'border-base-border'
+      }`}
+    >
+      <div className="flex items-start justify-between gap-3 p-4">
         <div className="flex-1 min-w-0">
-          <span className="text-sm font-medium text-text-primary">
+          <div className="font-semibold text-text-primary text-sm leading-snug">
             {place.name.replace(/ Budapest$/, '')}
-          </span>
+          </div>
           {place.tip && (
-            <p className="text-xs text-text-muted mt-0.5 leading-relaxed">{place.tip}</p>
+            <p className="text-xs text-text-muted mt-1 leading-relaxed">{place.tip}</p>
           )}
         </div>
         <div className="shrink-0 flex items-center gap-1.5">
           {place.info && (
             <button
               onClick={() => setOpen((v) => !v)}
-              className={`inline-flex items-center gap-1 border text-xs font-medium px-2.5 py-1.5 rounded-lg transition-all duration-200 active:scale-95 ${
+              className={`inline-flex items-center gap-1 border text-xs font-medium px-3 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
                 open
                   ? 'bg-accent/15 border-accent/50 text-accent'
-                  : 'bg-base-elevated border-base-border hover:border-accent/40 hover:text-accent text-text-muted'
+                  : 'bg-base-elevated border-base-border hover:border-accent/40 hover:text-accent text-text-secondary'
               }`}
               aria-expanded={open}
             >
@@ -397,55 +407,67 @@ function PlaceRow({ place }: { place: Place }) {
 
       {/* Expandable info panel */}
       {place.info && open && (
-        <div className="pb-3 pr-1">
-          <div className="rounded-xl border border-base-border bg-base-elevated/60 p-3.5 space-y-2.5">
-            <p className="text-xs text-text-secondary leading-relaxed">{place.info.history}</p>
-            <div className="flex items-start gap-2 pt-1 border-t border-base-border/50">
-              <span className="text-sm shrink-0 mt-0.5">💡</span>
-              <p className="text-xs text-text-muted leading-relaxed italic">{place.info.fact}</p>
-            </div>
+        <div className="mx-4 mb-4 rounded-xl border border-base-border bg-base-elevated/60 p-3.5 space-y-2.5">
+          <p className="text-xs text-text-secondary leading-relaxed">{place.info.history}</p>
+          <div className="flex items-start gap-2 pt-1 border-t border-base-border/50">
+            <span className="text-sm shrink-0 mt-0.5">💡</span>
+            <p className="text-xs text-text-muted leading-relaxed italic">{place.info.fact}</p>
           </div>
         </div>
       )}
-    </li>
+    </div>
   )
 }
 
 export function RecommendationsList() {
+  const [activeHeading, setActiveHeading] = useState(groups[0].heading)
+  const active = groups.find((g) => g.heading === activeHeading) ?? groups[0]
+
   return (
-    <section className="px-4 pt-32 pb-10">
+    <section id="recommendations" className="px-4 pt-32 pb-10">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Local picks</p>
           <h2 className="text-section font-bold text-text-primary">
-            Our recommendations
+            Our <span className="text-accent">favourites</span> by category
           </h2>
           <p className="text-text-secondary mt-2 text-sm">
-            We believe that all the places listed below are worthy of your limited time in our city. Scroll further to see our personal favourites.
+            Everything we&apos;d tell a friend on their first trip to Budapest.
           </p>
         </div>
 
-        <div className="flex flex-col gap-8">
+        {/* Category tabs — horizontally scrollable on mobile */}
+        <div className="flex gap-2 overflow-x-auto pb-3 mb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-4 px-4">
           {groups.map((group) => (
-            <div key={group.heading}>
-              {/* Group heading */}
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-base">{group.icon}</span>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-text-muted">
-                  {group.heading}
-                </h3>
-                <div className="flex-1 h-px bg-base-border" />
-              </div>
-
-              {/* List items */}
-              <ul className="flex flex-col gap-0">
-                {group.places.map((place) => (
-                  <PlaceRow key={place.name} place={place} />
-                ))}
-              </ul>
-            </div>
+            <button
+              key={group.heading}
+              onClick={() => {
+                setActiveHeading(group.heading)
+                trackEvent('card_click', { category: 'rec_list_tab', label: group.heading })
+              }}
+              className={[
+                'flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0',
+                activeHeading === group.heading
+                  ? 'bg-accent text-base-black'
+                  : 'bg-base-elevated border border-base-border text-text-secondary hover:text-text-primary hover:border-accent/30',
+              ].join(' ')}
+            >
+              <span>{group.icon}</span>
+              {group.heading}
+            </button>
           ))}
         </div>
+
+        {/* Place cards */}
+        <div className="flex flex-col gap-3">
+          {active.places.map((place) => (
+            <PlaceCard key={place.name} place={place} />
+          ))}
+        </div>
+
+        <p className="text-xs text-text-muted mt-4 text-center">
+          {active.places.length} {active.heading.toLowerCase()} picks
+        </p>
 
         <div id="rec-list-end" />
       </div>

@@ -5,7 +5,7 @@ import { CurrentYear } from '@/components/ui/CurrentYear'
 import { AdvertiseWithUs } from '@/components/sections/AdvertiseWithUs'
 
 const navLinks = [
-  { label: 'Itineraries', href: '#itineraries' },
+  { label: 'Itineraries', href: '#recommendations' },
   { label: 'Nightlife', href: '#nightlife' },
   { label: 'Food & drink', href: '#food' },
   { label: 'Experiences', href: '#experiences' },

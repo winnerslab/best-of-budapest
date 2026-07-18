@@ -3,17 +3,6 @@ import { Card } from '@/components/ui/Card'
 
 const founders = [
   {
-    name: 'George "Ru" Oosthuizen',
-    role: 'Bartender & Local Expert',
-    bio: "Has personally stress-tested Budapest's prosecco supply and somehow turned it into a public service. Equal parts boat host, nightlife scout, and professional bad-influence-with-good-intentions, Ru knows exactly where your night should start, peak, and get mildly irresponsible.",
-    emoji: '🛥️',
-    photo: '/images/profile-ru.png',
-    instagrams: [
-      { url: 'https://www.instagram.com/ru_oost/', label: 'IG' },
-      { url: 'https://www.instagram.com/ru_active/', label: 'Gym IG' },
-    ],
-  },
-  {
     name: 'Chris Thomson',
     role: 'Guest Manager & Pub Crawl Leader',
     bio: "Specialises in herding confused tourists, locating lost pub crawlers, and keeping the chaos looking intentional. If your night runs smoothly, Chris was probably behind it. If it gets weird, he'll still somehow make it feel like part of the package.",
@@ -26,14 +15,12 @@ const founders = [
     beerUrl: 'https://buymeacoffee.com/ctchristhomson',
   },
   {
-    name: 'Calvin Kriel',
-    role: 'Bartender & Event Management',
-    bio: "Knows Budapest nightlife like a man who's done extensive field research in dim lighting and loud music. From hidden bars to full-send party spots, Calvin can point you toward exactly the kind of evening your future self may or may not forgive.",
-    emoji: '🏙️',
-    photo: '/images/profile-calvin.png',
-    instagrams: [
-      { url: 'https://www.instagram.com/calvin_kriel/', label: 'IG' },
-    ],
+    name: 'Loli',
+    role: 'Pub Crawl Guide & Boat Party Staff',
+    bio: "Vet student by day, professional herder of tipsy tourists by night. Loli's juggled event promo, boat parties, and pub crawls across Budapest — she can calm a nervous first-timer and out-drink their friend group in the same evening. Ask her about her dog. Or her espresso martini order. Same energy either way.",
+    emoji: '🐶',
+    photo: '/images/profile-loli.jpg',
+    instagrams: [],
   },
 ]
 
@@ -56,7 +43,7 @@ export function WhyTrustUs() {
             <span className="text-gradient-accent">Actual locals.</span>
           </h2>
           <p className="text-text-secondary mt-3 leading-relaxed">
-            We are three students who work in Budapest tourism and nightlife. We get asked
+            We are students who work in Budapest tourism and nightlife. We get asked
             for recommendations by tourists every single week — so we built the guide we
             kept giving away for free.
           </p>

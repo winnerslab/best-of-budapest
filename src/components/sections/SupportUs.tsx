@@ -15,11 +15,12 @@ export function SupportUs() {
             <span className="text-gradient-warm">buy us a beer</span>
           </h2>
           <p className="text-text-secondary leading-relaxed mb-2 max-w-md mx-auto">
-            We&apos;re three students building the local guide we wish tourists always had.
+            We&apos;re Chris and Loli, building the local guide we wish tourists always had.
             This is free, and we want to keep it that way.
           </p>
           <p className="text-sm text-text-muted mb-6">
-            Your support helps us keep it updated, improve the content, and maybe buy our own beers for once.
+            Your support helps us keep it updated, improve the content, and fund the odd
+            round on us — his beer, her espresso martini.
           </p>
           <Button
             variant="warm"

@@ -1,20 +1,15 @@
+'use client'
+
+import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
+import { RedditShareModal } from '@/components/ui/RedditShareModal'
+import { trackEvent } from '@/lib/analytics'
 
 const platforms = [
-  {
-    label: 'TripAdvisor',
-    icon: '🦉',
-    href: 'https://www.tripadvisor.com/UserReviewEdit-g274887-d26585020-Budapest_Sip_and_Sail_Danube_Cruise_with_Unlimited_Prosecco-Budapest_Central_Hungary.html',
-  },
   {
     label: 'GetYourGuide',
     icon: '🎟️',
     href: 'https://gyg.me/LwhyxzBz',
-  },
-  {
-    label: 'Viator',
-    icon: '🗺️',
-    href: 'https://www.viator.com/tours/Budapest/Budapest-Sunset-Danube-Cruise-with-Unlimited-Prosecco/d499-69242P4?medium=social-share-copy',
   },
   {
     label: 'Google',
@@ -24,6 +19,8 @@ const platforms = [
 ]
 
 export function LeaveAReview() {
+  const [redditOpen, setRedditOpen] = useState(false)
+
   return (
     <section id="leave-a-review" className="px-4" style={{ background: 'var(--gradient-section)' }}>
       <div className="max-w-2xl mx-auto">
@@ -38,7 +35,9 @@ export function LeaveAReview() {
           </h2>
 
           <p className="text-text-secondary leading-relaxed mb-2 max-w-md mx-auto">
-            Every review that mentions <strong className="text-text-primary">Ru, Chris, or Calvin</strong>{' '}by name earns us a €5 tip from the company. That&apos;s beer money. That&apos;s motivation. That&apos;s the entire economy of this operation.
+            Every review that mentions <strong className="text-text-primary">Chris or Loli</strong>{' '}
+            by name earns us a €5 tip from the company. That&apos;s not beer money — that&apos;s
+            coffee date money. Help us keep the espresso martinis flowing.
           </p>
 
           <p className="text-sm text-text-muted mb-6 max-w-sm mx-auto">
@@ -49,7 +48,7 @@ export function LeaveAReview() {
             Use the platform you booked through
           </p>
 
-          <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="grid grid-cols-2 gap-3 mb-3">
             {platforms.map((p) => (
               <a
                 key={p.label}
@@ -64,11 +63,24 @@ export function LeaveAReview() {
             ))}
           </div>
 
+          <button
+            onClick={() => {
+              setRedditOpen(true)
+              trackEvent('reddit_share_click', { label: 'open_modal' })
+            }}
+            className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl border border-accent/40 bg-base-elevated text-sm font-semibold text-text-secondary hover:text-text-primary hover:border-accent active:scale-95 transition-all duration-200 mb-4"
+          >
+            <span>👽</span>
+            Share on Reddit
+          </button>
+
           <p className="text-xs text-text-muted italic">
             (Remember to sign in first — anonymous reviews don&apos;t count and we will be sad 🥲)
           </p>
         </Card>
       </div>
+
+      {redditOpen && <RedditShareModal onClose={() => setRedditOpen(false)} />}
     </section>
   )
 }
