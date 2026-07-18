@@ -20,7 +20,9 @@ const founders = [
     bio: "Vet student by day, professional herder of tipsy tourists by night. Loli's juggled event promo, boat parties, and pub crawls across Budapest — she can calm a nervous first-timer and out-drink their friend group in the same evening. Ask her about her dog. Or her espresso martini order. Same energy either way.",
     emoji: '🐶',
     photo: '/images/profile-loli.jpg',
-    instagrams: [],
+    instagrams: [
+      { url: 'https://www.instagram.com/hannelore_constable/?hl=en', label: 'IG' }
+    ],
   },
 ]
 
@@ -49,12 +51,12 @@ export function WhyTrustUs() {
           </p>
         </div>
 
-        <div className="grid gap-3 mb-8">
+        <div className="grid gap-4 mb-8">
           {founders.map((founder) => (
-            <Card key={founder.name} variant="default" className="p-4">
-              {/* Header: centred photo + name + role */}
-              <div className="flex flex-col items-center text-center mb-4">
-                <div className="w-24 h-24 rounded-full border-2 border-base-border shrink-0 overflow-hidden relative mb-3">
+            <Card key={founder.name} variant="default" className="p-4 sm:p-5">
+              <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
+                {/* Photo */}
+                <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-2xl border-2 border-base-border shrink-0 overflow-hidden relative">
                   <Image
                     src={founder.photo}
                     alt={founder.name}
@@ -62,51 +64,55 @@ export function WhyTrustUs() {
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                  <span className="font-semibold text-text-primary text-base">{founder.name}</span>
-                  <span className="text-base">{founder.emoji}</span>
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 text-center sm:text-left">
+                  <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+                    <span className="font-semibold text-text-primary text-lg sm:text-xl">{founder.name}</span>
+                    <span className="text-lg sm:text-xl">{founder.emoji}</span>
+                  </div>
+                  <div className="text-sm text-accent font-medium mt-1 mb-3">{founder.role}</div>
+
+                  {/* Bio */}
+                  <p className="text-sm text-text-secondary leading-relaxed mb-4">{founder.bio}</p>
+
+                  {/* Buttons */}
+                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start mt-auto">
+                    {founder.instagrams.map((ig) => (
+                      <a
+                        key={ig.url}
+                        href={ig.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
+                        style={{
+                          background: 'rgba(225,48,108,0.12)',
+                          borderColor: 'rgba(225,48,108,0.35)',
+                          color: '#E1306C',
+                        }}
+                        aria-label={`${founder.name} on Instagram (${ig.label})`}
+                      >
+                        <span className="text-[11px]">📸</span>
+                        <span>{ig.label}</span>
+                      </a>
+                    ))}
+                    {'beerUrl' in founder && founder.beerUrl && (
+                      <a
+                        href={founder.beerUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
+                        style={{
+                          background: 'rgba(251,191,36,0.15)',
+                          borderColor: 'rgba(251,191,36,0.5)',
+                          color: '#FBBF24',
+                        }}
+                      >
+                        <span>Buy Chris a beer! 🍺</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div className="text-xs text-accent font-medium mt-1">{founder.role}</div>
-              </div>
-
-              {/* Bio */}
-              <p className="text-xs text-text-secondary leading-relaxed mb-4">{founder.bio}</p>
-
-              {/* Buttons */}
-              <div className="flex flex-wrap gap-2">
-                {founder.instagrams.map((ig) => (
-                  <a
-                    key={ig.url}
-                    href={ig.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
-                    style={{
-                      background: 'rgba(225,48,108,0.12)',
-                      borderColor: 'rgba(225,48,108,0.35)',
-                      color: '#E1306C',
-                    }}
-                    aria-label={`${founder.name} on Instagram (${ig.label})`}
-                  >
-                    <span className="text-[11px]">📸</span>
-                    <span>{ig.label}</span>
-                  </a>
-                ))}
-                {'beerUrl' in founder && founder.beerUrl && (
-                  <a
-                    href={founder.beerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border text-xs font-medium rounded-lg transition-all duration-200 active:scale-95"
-                    style={{
-                      background: 'rgba(251,191,36,0.15)',
-                      borderColor: 'rgba(251,191,36,0.5)',
-                      color: '#FBBF24',
-                    }}
-                  >
-                    <span>Buy Chris a beer! 🍺</span>
-                  </a>
-                )}
               </div>
             </Card>
           ))}
