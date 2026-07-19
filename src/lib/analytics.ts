@@ -9,6 +9,8 @@ export type EventName =
   | 'review_popup_click'
   | 'buy_beer_click'
   | 'reddit_share_click'
+  | 'share_site_click'
+  | 'share_popup_click'
 
 export interface TrackEventOptions {
   label?: string
