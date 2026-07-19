@@ -57,21 +57,7 @@ const experiences: Experience[] = [
     tags: [{ label: 'Great for groups, stag & hen do\'s', color: 'warm' }],
     href: 'https://ultimatebudapest.com/things-to-do/most-popular/szechenyi-baths',
   },
-  {
-    id: 'sparty',
-    icon: '🪩',
-    title: 'Sparty — Bath Party',
-    description: "Budapest's legendary bath party. DJs, lasers, and thousands of people dancing in a thermal pool until the early hours — part rave, part hot tub, entirely unforgettable. Hands down one of the best group nights out in the city.",
-    tags: [{ label: 'Groups, stag & hen do\'s', color: 'warm' }],
-    href: 'https://ultimatebudapest.com/things-to-do',
-  },
-  {
-    id: 'day-trip',
-    icon: '🏰',
-    title: 'Day Trip: Visegrád & Esztergom',
-    description: "A scenic day out from Budapest — castles, the Danube bend, and countryside you won't see from the city.",
-    href: 'https://ultimatebudapest.com/things-to-do',
-  },
+
 ]
 
 export function BookExperiences() {

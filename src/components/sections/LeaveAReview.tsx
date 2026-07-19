@@ -18,8 +18,36 @@ const platforms = [
   },
 ]
 
+const SITE_URL = 'https://bestofbudapest.com'
+const SHARE_TEXT = '🇭🇺 Discovered the best hidden gems in Budapest — check this out!'
+
 export function LeaveAReview() {
   const [redditOpen, setRedditOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  async function handleShare() {
+    trackEvent('share_site_click', { label: 'leave_a_review_section' })
+
+    try {
+      await navigator.clipboard.writeText(SITE_URL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 3000)
+    } catch {
+      // Clipboard not available
+    }
+
+    setTimeout(async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Best of Budapest',
+            text: SHARE_TEXT,
+            url: SITE_URL,
+          })
+        } catch {}
+      }
+    }, 600)
+  }
 
   return (
     <section id="leave-a-review" className="px-4" style={{ background: 'var(--gradient-section)' }}>
@@ -40,22 +68,14 @@ export function LeaveAReview() {
             coffee date money. Help us keep the espresso martinis flowing.
           </p>
 
-          <p className="text-sm text-text-muted mb-6 max-w-sm mx-auto">
-            Takes 2 minutes. Costs you nothing. Makes us unreasonably happy. 🥲
-          </p>
-
-          <p className="text-xs text-accent font-semibold uppercase tracking-widest mb-3">
-            Use the platform you booked through
-          </p>
-
-          <div className="grid grid-cols-2 gap-3 mb-3">
+          <div className="grid grid-cols-2 gap-3 mb-4 mt-6">
             {platforms.map((p) => (
               <a
                 key={p.label}
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-warm/40 bg-base-elevated text-sm font-semibold text-text-secondary hover:text-text-primary hover:border-warm active:scale-95 transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-warm text-black shadow-warm-glow text-sm font-bold hover:opacity-90 active:scale-95 transition-all duration-200"
               >
                 <span>{p.icon}</span>
                 {p.label}
@@ -63,16 +83,32 @@ export function LeaveAReview() {
             ))}
           </div>
 
-          <button
-            onClick={() => {
-              setRedditOpen(true)
-              trackEvent('reddit_share_click', { label: 'open_modal' })
-            }}
-            className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl border border-accent/40 bg-base-elevated text-sm font-semibold text-text-secondary hover:text-text-primary hover:border-accent active:scale-95 transition-all duration-200 mb-4"
-          >
-            <span>👽</span>
-            Share on Reddit
-          </button>
+          <div className="flex flex-col gap-3 mb-4">
+            <button
+              onClick={() => {
+                setRedditOpen(true)
+                trackEvent('reddit_share_click', { label: 'open_modal' })
+              }}
+              className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-accent text-black shadow-accent-glow text-sm font-bold hover:opacity-90 active:scale-95 transition-all duration-200"
+            >
+              <span>👽</span>
+              Share on Reddit
+            </button>
+
+            <button
+              onClick={handleShare}
+              className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-warm text-black shadow-warm-glow text-sm font-bold hover:opacity-90 active:scale-95 transition-all duration-200 relative overflow-hidden"
+            >
+              {copied ? (
+                <span className="text-black">✓ Link copied to clipboard!</span>
+              ) : (
+                <>
+                  <span>💌</span>
+                  Share this site
+                </>
+              )}
+            </button>
+          </div>
 
           <p className="text-xs text-text-muted italic">
             (Remember to sign in first — anonymous reviews don&apos;t count and we will be sad 🥲)

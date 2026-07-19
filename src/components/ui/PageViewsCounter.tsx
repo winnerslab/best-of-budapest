@@ -16,7 +16,7 @@ export function PageViewsCounter() {
   return (
     <div className="flex flex-col items-center gap-3 py-10">
       <span className="text-xs text-text-muted uppercase tracking-widest">
-        Unique page views this month
+        Total travellers helped
       </span>
       <FlipCounter count={count} />
     </div>

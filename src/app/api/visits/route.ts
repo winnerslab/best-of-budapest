@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const key = `pageviews:unique:${new Date().toISOString().slice(0, 7)}`
+    const key = `pageviews:unique:total`
     const count = await redis.scard(key)
     return NextResponse.json({ count })
   } catch {

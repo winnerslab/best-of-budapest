@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react'
 import { trackEvent } from '@/lib/analytics'
 
 const STORAGE_KEY = 'review_popup_dismissed'
+const SITE_URL = 'https://bestofbudapest.com'
+const SHARE_TEXT = '🇭🇺 Discovered the best hidden gems in Budapest — check this out!'
 
 export function ReviewPopup() {
   const [visible, setVisible] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return
@@ -32,6 +35,37 @@ export function ReviewPopup() {
     sessionStorage.setItem(STORAGE_KEY, '1')
   }
 
+  async function handleShare() {
+    trackEvent('share_popup_click', { label: 'share_link' })
+
+    // Copy to clipboard first
+    try {
+      await navigator.clipboard.writeText(SITE_URL)
+      setCopied(true)
+    } catch {
+      // Clipboard not available — silently continue to share sheet
+    }
+
+    // After a brief moment to let the copy toast register, open the native share sheet
+    setTimeout(async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Best of Budapest',
+            text: SHARE_TEXT,
+            url: SITE_URL,
+          })
+          dismiss()
+        } catch {
+          // User cancelled or share failed — that's fine
+        }
+      } else {
+        // Desktop fallback: just dismiss after copy
+        setTimeout(dismiss, 1200)
+      }
+    }, 600)
+  }
+
   if (!visible) return null
 
   return (
@@ -54,32 +88,42 @@ export function ReviewPopup() {
         </button>
 
         {/* Icon */}
-        <div className="text-4xl mb-3 text-center">🤑</div>
+        <div className="text-4xl mb-3 text-center">🫶</div>
 
         {/* Title */}
         <h3 className="text-warm font-bold text-xl text-center mb-2">
-          Did you know?
+          Enjoying this?
         </h3>
 
         {/* Message */}
         <div className="text-text-secondary text-sm text-center leading-relaxed mb-5 space-y-2">
-          <p>We earn a <strong className="text-text-primary">5€ tip</strong> for every review that mentions our names!</p>
+          <p>
+            Budapest's best-kept secrets deserve more love.{' '}
+            <strong className="text-text-primary">Tell a friend</strong> — it
+            takes two seconds and means the world to us 🙏
+          </p>
           <p className="text-xs text-text-muted italic">
-            (Just remember to sign in, otherwise it won't count 🥲)
+            (No algorithm. No ads. Just good vibes spreading the word.)
           </p>
         </div>
 
+        {/* Copy notification */}
+        <div
+          className={`text-center text-xs font-medium mb-3 transition-all duration-300 ${
+            copied ? 'text-warm opacity-100' : 'opacity-0'
+          }`}
+          aria-live="polite"
+        >
+          ✓ Link copied to clipboard!
+        </div>
+
         {/* CTA */}
-        <a
-          href="#leave-a-review"
-          onClick={() => {
-            trackEvent('review_popup_click', { label: 'leave_review' })
-            dismiss()
-          }}
+        <button
+          onClick={handleShare}
           className="block w-full text-center bg-warm text-base-black font-semibold text-sm py-3 rounded-xl hover:bg-warm-light active:scale-95 transition-all duration-200 shadow-warm-glow"
         >
-          Leave a review now! ⭐
-        </a>
+          Share with a friend 💌
+        </button>
 
         {/* Dismiss link */}
         <button
