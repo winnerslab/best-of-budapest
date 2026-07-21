@@ -7,7 +7,7 @@ const founders = [
     role: 'Guest Manager & Pub Crawl Leader',
     bio: "Specialises in herding confused tourists, locating lost pub crawlers, and keeping the chaos looking intentional. If your night runs smoothly, Chris was probably behind it. If it gets weird, he'll still somehow make it feel like part of the package.",
     emoji: '🍸',
-    photo: '/images/profile-chris.png',
+    photo: '/images/profile-chris.JPG',
     instagrams: [
       { url: 'https://www.instagram.com/chris.james.thomson/', label: 'IG' },
       { url: 'https://www.instagram.com/thomson.rsa/', label: 'DJ IG' },
